@@ -5,7 +5,7 @@ APP_DIR=$(pwd)
 PORT=3002
 
 echo "----------------------------------------"
-echo "Starting Ticketmaster Rebranded App..."
+echo "Starting TicketEscrow Rebranded App..."
 echo "----------------------------------------"
 
 # Navigate to app directory

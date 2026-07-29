@@ -57,11 +57,13 @@ export default function EventsPage() {
       tournament: string; subcategory: string;
     }> = {};
 
+    const now = new Date();
     tickets.forEach(t => {
       if (t.deletedSTAMP?.trim()) return;
       const pList = (t.platform || '').toLowerCase().split(',').map(p => p.trim());
       if (!pList.includes('escrow')) return;
       if (t.ticketStatus?.toUpperCase() !== 'ACTIVE') return;
+      if (t.dateTime && new Date(t.dateTime) < now) return;
       const key = `${t.eventName.trim().toLowerCase()}_${t.dateTime}`;
       if (!groups[key]) {
         groups[key] = {

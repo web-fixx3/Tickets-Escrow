@@ -42,11 +42,13 @@ export default function PurchaseToast({ tickets, eventName: overrideEventName }:
     const eventNames = new Set<string>();
     const listings: Array<{ section: string; eventName: string }> = [];
 
+    const now = new Date();
     tickets.forEach(t => {
       if (t.deletedSTAMP?.trim()) return;
       if (t.ticketStatus?.toUpperCase() !== 'ACTIVE') return;
       const pList = (t.platform || '').toLowerCase().split(',').map(p => p.trim());
       if (!pList.includes('escrow')) return;
+      if (t.dateTime && new Date(t.dateTime) < now) return;
 
       const en = t.eventName.trim();
       if (overrideEventName && en.toLowerCase() === overrideEventName.toLowerCase()) return;

@@ -2,19 +2,16 @@
 > nextjs-fastapi@0.1.0 dev
 > concurrently "npm run next-dev" "npm run fastapi-dev"
 
-[0] 
-[0] > nextjs-fastapi@0.1.0 next-dev
-[0] > next dev -p 3002
-[0] 
 [1] 
 [1] > nextjs-fastapi@0.1.0 fastapi-dev
 [1] > pip3 install -r requirements.txt && python -m uvicorn api.index:app --reload
 [1] 
+[0] 
+[0] > nextjs-fastapi@0.1.0 next-dev
+[0] > next dev -p 3002
+[0] 
 [0] - ready started server on 0.0.0.0:3002, url: http://localhost:3002
 [0] - [36minfo[39m Loaded env from C:\Users\HP\Desktop\ZIPPER\WEBFIXX\DEV\Extra Tools\Tickets-Escrow\.env.local
-[0] - [33mwarn[39m [1mYou have enabled experimental feature (serverComponentsExternalPackages) in next.config.js.[22m
-[0] - [33mwarn[39m Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
-[0] 
 [1] Requirement already satisfied: annotated-types==0.7.0 in c:\python311\lib\site-packages (from -r requirements.txt (line 1)) (0.7.0)
 [1] Requirement already satisfied: anyio==4.4.0 in c:\python311\lib\site-packages (from -r requirements.txt (line 2)) (4.4.0)
 [1] Requirement already satisfied: cachetools==5.5.0 in c:\python311\lib\site-packages (from -r requirements.txt (line 3)) (5.5.0)
@@ -58,21 +55,81 @@
 [1] Requirement already satisfied: watchfiles==0.22.0 in c:\users\hp\appdata\roaming\python\python311\site-packages (from -r requirements.txt (line 42)) (0.22.0)
 [1] Requirement already satisfied: websockets==12.0 in c:\python311\lib\site-packages (from -r requirements.txt (line 43)) (12.0)
 [1] Requirement already satisfied: colorama in c:\python311\lib\site-packages (from click==8.1.7->-r requirements.txt (line 7)) (0.4.6)
+[0] - [33mwarn[39m [1mYou have enabled experimental feature (serverComponentsExternalPackages) in next.config.js.[22m
+[0] - [33mwarn[39m Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+[0] 
+[1] 
+[1] [notice] A new release of pip is available: 24.2 -> 26.1.2
+[1] [notice] To update, run: python.exe -m pip install --upgrade pip
+[1] INFO:     Will watch for changes in these directories: ['C:\\Users\\HP\\Desktop\\ZIPPER\\WEBFIXX\\DEV\\Extra Tools\\Tickets-Escrow']
+[1] INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+[1] INFO:     Started reloader process [20092] using WatchFiles
 [0] - [36minfo[39m Using wasm build of next-swc
 [0] - [33mwarn[39m Attempted to load @next/swc-win32-x64-gnu, but it was not installed
 [0] - [33mwarn[39m Attempted to load @next/swc-win32-x64-msvc, but an error occurred: \\?\C:\Users\HP\Desktop\ZIPPER\WEBFIXX\DEV\Extra Tools\Tickets-Escrow\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node is not a valid Win32 application.
 [0] \\?\C:\Users\HP\Desktop\ZIPPER\WEBFIXX\DEV\Extra Tools\Tickets-Escrow\node_modules\@next\swc-win32-x64-msvc\next-swc.win32-x64-msvc.node
-[1] 
-[notice] A new release of pip is available: 24.2 -> 26.1.2
-[1] [notice] To update, run: python.exe -m pip install --upgrade pip
-[1] INFO:     Will watch for changes in these directories: ['C:\\Users\\HP\\Desktop\\ZIPPER\\WEBFIXX\\DEV\\Extra Tools\\Tickets-Escrow']
-[1] INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
-[1] INFO:     Started reloader process [33156] using WatchFiles
-[0] - [35mevent[39m compiled client and server successfully in 13.7s (313 modules)
-[0] - [36mwait[39m compiling...
-[0] - [35mevent[39m compiled client and server successfully in 4s (313 modules)
-[1] INFO:     Started server process [26488]
+[1] INFO:     Started server process [18052]
 [1] INFO:     Waiting for application startup.
 [1] INFO:     Application startup complete.
+[0] - [35mevent[39m compiled client and server successfully in 10.6s (313 modules)
 [0] - [36mwait[39m compiling...
-[0] - [35mevent[39m compiled client and server successfully in 2.5s (313 modules)
+[0] - [35mevent[39m compiled client and server successfully in 9s (313 modules)
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] Browserslist: caniuse-lite is outdated. Please run:
+[0]   npx update-browserslist-db@latest
+[0]   Why you should do it regularly: https://github.com/browserslist/update-db#readme
+[0] - [35mevent[39m compiled client and server successfully in 8.1s (642 modules)
+[0] - [36mwait[39m compiling...
+[0] - [35mevent[39m compiled successfully in 2.2s (389 modules)
+[0] 
+[0] - [33mwarn[39m metadata.metadataBase is not set for resolving social open graph or twitter images, fallbacks to "http://localhost:3002". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[0] - [36mwait[39m compiling /event-details/page (client and server)...
+[0] - [35mevent[39m compiled client and server successfully in 9.2s (629 modules)
+[0] 
+[0] 
+[0] 
+[0] - [36mwait[39m compiling /page (client and server)...
+[0] - [35mevent[39m compiled successfully in 416 ms (257 modules)
+[0] 
+[0] - [36mwait[39m compiling...
+[0] - [35mevent[39m compiled client and server successfully in 3.1s (417 modules)
+[0] - [36mwait[39m compiling...
+[0] - [31merror[39m ./app/page.tsx
+[0] NonErrorEmittedError: (Emitted value instead of an instance of Error) 
+[0]   x Unexpected token `div`. Expected jsx identifier
+[0]      ,-[C:\Users\HP\Desktop\ZIPPER\WEBFIXX\DEV\Extra Tools\Tickets-Escrow\app\page.tsx:184:1]
+[0]  184 |   }
+[0]  185 | 
+[0]  186 |   return (
+[0]  187 |     <div className="min-h-screen flex flex-col antialiased">
+[0]      :      ^^^
+[0]  188 |       {headerNav}
+[0]  189 | 
+[0]  190 |       <main>
+[0]      `----
+[0] 
+[0] Caused by:
+[0]     0: failed to process js file
+[0]     1: Syntax Error
+[0] Import trace for requested module:
+[0] ./app/page.tsx
+[0] - [36mwait[39m compiling /contact/page (client and server)...
+[0] - [31merror[39m ./app/page.tsx
+[0] NonErrorEmittedError: (Emitted value instead of an instance of Error) 
+[0]   x Unexpected token `div`. Expected jsx identifier
+[0]      ,-[C:\Users\HP\Desktop\ZIPPER\WEBFIXX\DEV\Extra Tools\Tickets-Escrow\app\page.tsx:184:1]
+[0]  184 |   }
+[0]  185 | 
+[0]  186 |   return (
+[0]  187 |     <div className="min-h-screen flex flex-col antialiased">
+[0]      :      ^^^
+[0]  188 |       {headerNav}
+[0]  189 | 
+[0]  190 |       <main>
+[0]      `----
+[0] 
+[0] Caused by:
+[0]     0: failed to process js file
+[0]     1: Syntax Error
+[0] Import trace for requested module:
+[0] ./app/page.tsx

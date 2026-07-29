@@ -2,17 +2,20 @@
 
 import { useState, useEffect } from 'react';
 
-const TARGET = new Date('2026-06-11T00:00:00');
+interface CountdownProps {
+  targetDate: string | Date;
+}
 
-export default function Countdown() {
+export default function Countdown({ targetDate }: CountdownProps) {
   const [days, setDays] = useState('00');
   const [hours, setHours] = useState('00');
   const [mins, setMins] = useState('00');
   const [secs, setSecs] = useState('00');
 
   useEffect(() => {
+    const target = new Date(targetDate).getTime();
     const tick = () => {
-      const diff = TARGET.getTime() - Date.now();
+      const diff = target - Date.now();
       if (diff <= 0) return;
       setDays(String(Math.floor(diff / 86400000)).padStart(2, '0'));
       setHours(String(Math.floor((diff % 86400000) / 3600000)).padStart(2, '0'));
@@ -22,7 +25,7 @@ export default function Countdown() {
     tick();
     const id = setInterval(tick, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [targetDate]);
 
   const tiles = [
     { value: days, label: 'Days' },

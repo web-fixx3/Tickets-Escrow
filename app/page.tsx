@@ -57,11 +57,13 @@ export default function Home() {
       tournament: string; subcategory: string;
     }> = {};
 
+    const now = new Date();
     tickets.forEach(t => {
       if (t.deletedSTAMP?.trim()) return;
       const pList = (t.platform || '').toLowerCase().split(',').map(p => p.trim());
       if (!pList.includes('escrow')) return;
       if (t.ticketStatus?.toUpperCase() !== 'ACTIVE') return;
+      if (t.dateTime && new Date(t.dateTime) < now) return;
       const key = `${t.eventName.trim().toLowerCase()}_${t.dateTime}`;
       if (!groups[key]) {
         groups[key] = {
@@ -81,6 +83,22 @@ export default function Home() {
   }, [tickets]);
 
   const featuredEvents = useMemo(() => groupedEvents.slice(0, 8), [groupedEvents]);
+
+  const nearestEvent = useMemo(() => {
+    if (!groupedEvents.length) return null;
+    return groupedEvents.reduce((closest, ev) => {
+      if (!closest) return ev;
+      const a = new Date(closest.dateTime).getTime();
+      const b = new Date(ev.dateTime).getTime();
+      return b < a ? ev : closest;
+    }, groupedEvents[0] || null);
+  }, [groupedEvents]);
+
+  const countdownVerb = useMemo(() => {
+    if (!nearestEvent) return 'starts';
+    const cat = (nearestEvent.category || '').toLowerCase();
+    return (cat === 'football' || cat === 'boxing' || cat === 'rugby') ? 'kicks off' : 'starts';
+  }, [nearestEvent]);
 
   const headerNav = (
     <header className="sticky top-0 z-50 border-b border-slate-200 bg-white/95 backdrop-blur-sm">
@@ -193,13 +211,13 @@ export default function Home() {
           <div className="relative overflow-hidden bg-slate-900">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-slate-400 font-medium mb-4">
-                June &mdash; July 2026 &middot; USA, Canada &amp; Mexico
+                Verified Tickets &middot; Secure Transactions
               </p>
               <h1 className="text-3xl sm:text-5xl font-extrabold text-white tracking-tight mb-4">
-                FIFA World Cup 2026
+                Browse Event Tickets
               </h1>
               <p className="text-slate-400 max-w-xl mx-auto mb-8">
-                Group stage tickets available now. Browse all 72 matches and secure your seats.
+                Find and purchase verified tickets for upcoming events. Browse listings and contact sellers directly.
               </p>
               <Link
                 href={t('/events')}
@@ -214,12 +232,14 @@ export default function Home() {
           </div>
 
           {/* Countdown */}
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
-            <p className="text-xs text-slate-400 uppercase tracking-widest mb-4 font-medium">
-              FIFA World Cup 2026 kicks off in
-            </p>
-            <Countdown />
-          </div>
+          {nearestEvent && (
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+              <p className="text-xs text-slate-400 uppercase tracking-widest mb-4 font-medium">
+                {nearestEvent.eventName} {countdownVerb} in
+              </p>
+              <Countdown targetDate={nearestEvent.dateTime} />
+            </div>
+          )}
         </section>
 
         {/* Featured Events */}
