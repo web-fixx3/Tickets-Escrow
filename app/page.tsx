@@ -209,7 +209,19 @@ export default function Home() {
         {/* Hero */}
         <section className="border-b border-slate-200 bg-white">
           <div className="relative overflow-hidden bg-slate-900">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
+            {nearestEvent?.coverImage && (
+              <Image
+                src={nearestEvent.coverImage}
+                alt={nearestEvent.eventName}
+                fill
+                className="object-cover opacity-30"
+                sizes="100vw"
+                priority
+                unoptimized
+              />
+            )}
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/60 to-slate-900/80" />
+            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
               <p className="text-xs uppercase tracking-[0.25em] text-slate-400 font-medium mb-4">
                 Verified Tickets &middot; Secure Transactions
               </p>
